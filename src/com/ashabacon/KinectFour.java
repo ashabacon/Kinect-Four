@@ -6,8 +6,8 @@ import java.awt.event.*;
 
 public class KinectFour extends JPanel {
 //    private JButton button = new JButton("My Button");
-    private int rows = 6, columns = 7;
-    private JButton grid[][] = new JButton[columns+1][rows+1];
+    private final int rows = 6, columns = 7;
+    private JButton grid[][] = new JButton[rows][columns];
     KinectFour () {
         setLayout(new BorderLayout());
         setBackground(Color.gray);
@@ -18,7 +18,7 @@ public class KinectFour extends JPanel {
         playSpace.setSize(300, 300);
 
         for (int i = 0; i < rows*columns; i++) {
-            int x = i/rows;
+            int x = i%rows;
             int y = i%columns;
             grid[x][y] = new JButton();
             playSpace.add(grid[x][y]);
@@ -33,7 +33,7 @@ public class KinectFour extends JPanel {
             // grid[x][y] = Jbutton - different methods available
         }
 
-        add(playSpace, BorderLayout.NORTH);
+        add(playSpace, BorderLayout.SOUTH);
 
 
     }
