@@ -6,25 +6,25 @@ import java.awt.event.*;
 
 public class KinectFour extends JPanel {
 //    private JButton button = new JButton("My Button");
+//    private char empty = 'O', full = 'X';
     private final int rows = 6, columns = 7;
-    private JButton grid[][] = new JButton[rows][columns];
+    private JButton grid[][] = new RoundButton[rows][columns];
     KinectFour () {
-        setLayout(new BorderLayout());
+        setLayout(new FlowLayout());
         setBackground(Color.gray);
 
         JPanel playSpace = new JPanel();
-        playSpace.setBackground(Color.gray);
-        playSpace.setLayout(new GridLayout(rows, columns));
-        playSpace.setSize(300, 300);
+        playSpace.setBackground(Color.lightGray);
+        playSpace.setLayout(new GridLayout(rows, columns, 3, 3));
+        playSpace.setSize(400, 400);
 
         for (int i = 0; i < rows*columns; i++) {
-            int x = i%rows;
-            int y = i%columns;
-            grid[x][y] = new JButton();
+            int x = i % rows;
+            int y = i % columns;
+            grid[x][y] = new RoundButton();
             playSpace.add(grid[x][y]);
-            grid[x][y].setOpaque(true);
 
-            grid[x][y].setOpaque(true);
+//            grid[x][y].setContentAreaFilled(false);
             grid[x][y].addActionListener(new ButtonListener());
             grid[x][y].setFont(new Font("Times", Font.PLAIN, 30));
             grid[x][y].setPreferredSize(new Dimension(50, 50));
